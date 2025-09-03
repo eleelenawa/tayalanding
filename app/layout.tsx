@@ -1,15 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import { GeistMono } from "geist/font/mono"
 import "./globals.css"
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-inter",
-  display: "swap",
-})
 
 export const metadata: Metadata = {
   title: "Taya - Intelligent Jewelry",
@@ -27,13 +18,11 @@ export default function RootLayout({
       <head>
         <style>{`
 html {
-  font-family: ${inter.style.fontFamily};
-  --font-sans: ${inter.variable};
-  --font-mono: ${GeistMono.variable};
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
         `}</style>
       </head>
-      <body className={`${inter.variable}`}>{children}</body>
+      <body style={{ fontFamily: '"General Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>{children}</body>
     </html>
   )
 }

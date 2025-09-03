@@ -8,13 +8,18 @@ import BrandStory from "@/components/brand-story"
 
 export default function ShaderShowcase() {
   return (
-    <div className="min-h-screen">
+    <div>
       <ShaderBackground>
-        <Header />
-        <HeroContent />
-        <PulsingCircle />
+        {/* Hero Section */}
+        <div className="min-h-screen relative">
+          <Header />
+          <HeroContent />
+          <PulsingCircle />
+        </div>
+        
+        {/* Brand Story Section */}
+        <BrandStory />
       </ShaderBackground>
-      <BrandStory />
     </div>
   )
 }
