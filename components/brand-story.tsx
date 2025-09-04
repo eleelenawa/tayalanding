@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 
 export default function BrandStory() {
-  const [currentWordIndex, setCurrentWordIndex] = useState(-1)
-  const [hasTriggered, setHasTriggered] = useState(false)
+  const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const sectionRef = useRef<HTMLDivElement>(null)
 
   const words = [
@@ -14,32 +13,13 @@ export default function BrandStory() {
   ]
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasTriggered) {
-            setHasTriggered(true)
-            words.forEach((_, index) => {
-              setTimeout(() => {
-                setCurrentWordIndex(index)
-              }, index * 1000) // 1000ms delay between each word replacement
-            })
-          }
-        })
-      },
-      { threshold: 0.3 }
-    )
+    // Start cycling immediately when component mounts
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length)
+    }, 2000)
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [hasTriggered])
+    return () => clearInterval(interval)
+  }, [words.length])
 
   return (
     <section ref={sectionRef} className="relative py-24 px-8 min-h-screen flex items-center justify-center">
