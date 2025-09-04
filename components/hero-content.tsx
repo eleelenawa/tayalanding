@@ -13,7 +13,7 @@ export default function HeroContent() {
           <img
             src="/hero-image.png"
             alt="Taya Intelligent Jewelry"
-            className="w-full h-[95vh] object-cover rounded-3xl shadow-2xl"
+            className="w-full h-[95vh] object-cover object-[center_75%] rounded-3xl shadow-2xl"
             style={{
               filter: "brightness(1.1) contrast(1.2) saturate(1.1)",
             }}
