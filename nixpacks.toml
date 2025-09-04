@@ -1,8 +1,12 @@
+[variables]
+NPM_CONFIG_PACKAGE_MANAGER = "npm"
+NIXPACKS_NO_PNPM = "1"
+
 [phases.setup]
 nixPkgs = ["nodejs_18"]
 
-[phases.install]
-cmd = "npm install"
+[phases.install] 
+cmd = "npm ci --legacy-peer-deps"
 
 [phases.build]
 cmd = "npm run build"
