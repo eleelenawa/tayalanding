@@ -16,9 +16,11 @@ export async function POST(request: NextRequest) {
           description: body.description,
           content_creator: body.contentCreator,
           heard_about: body.heardAbout || null,
-          other_source: body.otherSource || null
+          other_source: body.otherSource || null,
+          form_completed: false
         }
       ])
+      .select() // Return the created record
 
     if (error) {
       console.error('Supabase error:', error)

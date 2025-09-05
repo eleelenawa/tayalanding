@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import WaitlistModal from "./waitlist-modal"
+import WaitlistModal from "./waitlist-modal-progressive"
 
 export default function HeroContent() {
   const [isModalOpen, setIsModalOpen] = useState(false)

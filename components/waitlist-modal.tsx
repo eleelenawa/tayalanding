@@ -8,18 +8,33 @@ interface WaitlistModalProps {
 }
 
 export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
-  const [formData, setFormData] = useState({
+  // Progressive form stages
+  const [currentStage, setCurrentStage] = useState<'initial' | 'personalize' | 'success'>('initial')
+  const [waitlistId, setWaitlistId] = useState<number | null>(null)
+  
+  // Initial form data (stage 1)
+  const [initialData, setInitialData] = useState({
     firstName: "",
     lastName: "",
     email: "",
+    contentCreator: false
+  })
+
+  // Personalization form data (stage 2)
+  const [personalizeData, setPersonalizeData] = useState({
     description: [] as string[],
-    contentCreator: false,
     heardAbout: "",
-    otherSource: ""
+    otherSource: "",
+    socialHandleInstagram: "",
+    socialHandleTiktok: "",
+    socialHandleTwitter: "",
+    socialHandleYoutube: "",
+    followerCountRange: "",
+    contentNiche: "",
+    collaborationInterests: ""
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
 
   const [errors, setErrors] = useState<Record<string, string>>({})
